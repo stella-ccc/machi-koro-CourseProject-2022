@@ -57,7 +57,8 @@ void Game::num_ai_player()//创造人物，并初始化发送卡片（一个Whea
 	}
 }
 
-bool Game::choose_game()
+bool Game::choose_game()//选择游戏模式
+
 {
 	cout << "Bienvenue à MachiKoro" << endl << endl;
 	cout << "Voici deux versions de ce jeu" << endl << endl;
@@ -280,6 +281,7 @@ int Game::player_input(string message)//玩家输入想要的操作
 		else getline(cin, str);
 		isRound1 = false;
 		vector<string> input = split(str);//通过空格分开字符串，得到input[0]，input[1]
+		//判定输入的命令是否有效/是否已经拥有某卡牌/是否有钱买卡牌
 		if (!regex_match(str, view))
 		{
 			cout << "Commande inconnue" << endl;
@@ -306,7 +308,7 @@ int Game::player_input(string message)//玩家输入想要的操作
 			}
 			if (this->players[this->turn]->bank->get_coins() >= this->players[this->turn]->yellow_cards[0]->get_cost())
 			{
-				this->players[this->turn]->yellow_cards[0]->active = true;//TODO:cost money(qyb)
+				this->players[this->turn]->yellow_cards[0]->active = true;
 				this->players[this->turn]->bank->withdraw(this->players[this->turn]->yellow_cards[0]->get_cost());
 				return (this->players[this->turn]->bank->get_coins());
 			}
@@ -345,7 +347,7 @@ int Game::player_input(string message)//玩家输入想要的操作
 			}
 			if (this->players[this->turn]->yellow_cards[0]->active && this->players[this->turn]->yellow_cards[1]->active && this->players[this->turn]->bank->get_coins() >= this->players[this->turn]->yellow_cards[2]->get_cost())
 			{
-				this->players[this->turn]->yellow_cards[2]->active = true;//TODO:cost money(qyb)
+				this->players[this->turn]->yellow_cards[2]->active = true;
 				this->players[this->turn]->bank->withdraw(this->players[this->turn]->yellow_cards[2]->get_cost());
 
 
@@ -366,7 +368,7 @@ int Game::player_input(string message)//玩家输入想要的操作
 			}
 			if (this->players[this->turn]->yellow_cards[0]->active && this->players[this->turn]->yellow_cards[1]->active && this->players[this->turn]->yellow_cards[2]->active && this->players[this->turn]->bank->get_coins() >= this->players[this->turn]->yellow_cards[3]->get_cost())
 			{
-				this->players[this->turn]->yellow_cards[3]->active = true;//TODO:cost money(qyb)
+				this->players[this->turn]->yellow_cards[3]->active = true;
 				this->players[this->turn]->bank->withdraw(this->players[this->turn]->yellow_cards[3]->get_cost());
 
 				return (this->players[this->turn]->bank->get_coins());
@@ -434,7 +436,7 @@ void Game::roll_dice()//掷骰子主程序
 	}
 	this->rolling_dice(dice_count);
 
-	// Should be Radio Tower（如果有Radio Tower，可以重新掷骰子）
+	// 判定是否有广播塔
 	if (this->players[this->turn]->yellow_cards[3]->active)
 	{
 		cout << "Roulé un " << this->dice << ". Relancer (y/n) : ";
@@ -467,7 +469,7 @@ void Game::red_card_check()//判断是否存在红色卡片，
 				this->dice >= this->players[tracker]->red_cards[i]->get_low_roll())
 			{
 				Card* c = NULL;
-				// Should be Shopping Mall
+				// 判定是否激活购物中心
 				if (this->players[tracker]->yellow_cards[2]->active) c = this->players[tracker]->red_cards[i];
 				this->players[tracker]->red_cards[i]->action(//action在继承类中重新定义，执行红卡扣钱操作
 					this->players[tracker]->bank,
@@ -477,7 +479,6 @@ void Game::red_card_check()//判断是否存在红色卡片，
 					0
 				);
 			}
-			//if (this->players[i]->bank->get_coins() == 0) break;
 		}
 		tracker--;
 		if (tracker < 0) tracker = this->players.size() - 1;
@@ -514,7 +515,7 @@ void Game::green_card_check()//对自身有效
 			this->dice >= this->players[this->turn]->green_cards[i]->get_low_roll())
 		{
 			Card* c = NULL;
-			// Should be Shopping Mall
+			// 判断Shopping Mall Card是否active 
 			if (this->players[this->turn]->yellow_cards[2]->active) c = this->players[this->turn]->red_cards[i];
 			int val = 0;
 			Icon icon = this->players[this->turn]->green_cards[i]->get_icon();
@@ -537,7 +538,6 @@ void Game::green_card_check()//对自身有效
 	this->purple_card_check();//进行紫卡的判定
 }
 
-// TODO: Refactor this. Especially the card swapping. It u-g-l-y
 void Game::purple_card_check()
 {
 	for (int i = 0; i < this->players[this->turn]->purple_cards.size(); i++)
@@ -644,7 +644,7 @@ void Game::purple_card_check()
 	this->buy_propery();//进入买卡操作
 }
 
-// TODO: Allow buying of property
+// 购买卡牌与卡槽中卡牌的变化（包括能否购买的判定）
 void Game::buy_propery()
 {
 	cout << "Pièces après règlement: " << this->players[this->turn]->bank->get_coins() << endl;
@@ -696,9 +696,9 @@ void Game::buy_propery()
 					complete = true;
 				}
 			}
-			else if (Color::yellow == this->slot[select][0]->get_color())//黄色卡片的购买还没有写，因为黄色卡片不是从卡槽中抽取，大家开局都有黄卡，但是状态不是active
+			else if (Color::yellow == this->slot[select][0]->get_color())
 			{
-				//TODO: Implement buying mello yello(因为黄卡已经在玩家手上，所以这块不用做）
+				//此处无需写黄卡的购买，游戏进程中已经默认玩家拥有黄卡，只是处于未激活状态，无需再从卡槽中抽取
 			}
 			if (this->slot[select].size() == 0)
 			{
@@ -732,7 +732,7 @@ void Game::end_of_turn()//对是否结束进行判定，并且进入下一玩家
 	cout << "Fin du tour de " << this->turn << endl << "Pièces après l’achat: " << this->players[turn]->bank->get_coins();//打印本轮玩家所剩硬币
 	this->turn++;
 
-	// Should be Amusement Park card
+	// 判断Amusement Park card是否active 
 	if (this->players[this->turn - 1]->yellow_cards[2]->active)
 	{
 		turn--;

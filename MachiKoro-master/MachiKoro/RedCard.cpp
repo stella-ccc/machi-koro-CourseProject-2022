@@ -1,7 +1,8 @@
 #include "stdafx.h"
 #include "RedCard.h"
 
-// Player 1 will take coins from player 2
+// 红色卡牌（收钱）的实现
+//函数传入的玩家1会从玩家2处收取金币
 void RedCard::action(Bank *p1, Bank *p2, Card *c1, Card *c2, int val)
 {
 	int bonus = 0;

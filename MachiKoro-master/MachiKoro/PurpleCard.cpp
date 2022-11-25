@@ -1,12 +1,12 @@
 #include "stdafx.h"
 #include "PurpleCard.h"
-
+//紫色卡牌的具体实现（此部分仅预留了接口，目前实现写在了Game.cpp中）
 BusinessCenter::BusinessCenter() {
 	this->set_card("BusinessCenter", 8, 0, 6, 6, Icon::establishment, Color::purple);
 }
 
 void BusinessCenter::action(Bank *p1, Bank *p2, Card *c1, Card *c2, int val) {
-	// This one is going to be fun. Let the game manager handle it for now.
+	// 实现卡牌交换功能，在game.cpp中实现，后续待优化封装
 }
 
 Stadium::Stadium() {

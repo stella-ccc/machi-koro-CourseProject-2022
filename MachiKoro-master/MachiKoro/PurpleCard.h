@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Card.h"
-
+//×ÏÉ«¿¨ÅÆÉùÃ÷
 using namespace machi;
 
 class PurpleCard : public Card {

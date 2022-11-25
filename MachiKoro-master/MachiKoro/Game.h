@@ -9,7 +9,7 @@ using namespace std;
 
 class player {
 public:
-	bool isBot;
+	bool isBot;//ÅĞ¶ÏÊÇ·ñÎªAI
 	string name;
 	Bank* bank;
 	vector<BlueCard*> blue_cards;

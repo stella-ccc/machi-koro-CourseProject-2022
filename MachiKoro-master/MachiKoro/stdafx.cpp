@@ -1,8 +1,5 @@
-// stdafx.cpp : source file that includes just the standard includes
-// MachiKoro.pch will be the pre-compiled header
-// stdafx.obj will contain the pre-compiled type information
+// stdafx.cpp : 源文件，其中只包括标准内容。
 
 #include "stdafx.h"
 
-// TODO: reference any additional headers you need in STDAFX.H
-// and not in this file
+

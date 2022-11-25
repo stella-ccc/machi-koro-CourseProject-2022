@@ -1,4 +1,4 @@
-// MachiKoro.cpp : Defines the entry point for the console application.
+// MachiKoro.cpp 定义了控制台应用程序的入口点
 //
 #include "stdafx.h"
 #include <iostream>
