@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "BlueCard.h"
-//蓝色属性卡牌（针对所有玩家）的具体实现
+
 void BlueCard::action(Bank *p1, Bank *p2, Card *c1, Card *c2, int val)
 {
 	p1->deposit(this->get_value());

@@ -18,7 +18,7 @@ ostream& operator << (ostream& os, const Icon& obj)
 	os << static_cast<typename underlying_type<Icon>::type>(obj);
 	return os;
 }
-//³éÈ¡¿¨ÅÆµ½×ÀÃæ
+
 Deck::Deck()
 {
 	Card *c;

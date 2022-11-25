@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "GreenCard.h"
-//绿色属性卡牌（针对个人）的实现，会根据其他建筑物数量（icon）来决定金币数
+
 void GreenCard::action(Bank *p1, Bank *p2, Card *c1, Card *c2, int val)
 {
 	int bonus = 0;

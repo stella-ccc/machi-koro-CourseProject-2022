@@ -1,4 +1,6 @@
-// stdafx.h : 标准系统包含文件的包含文件，或经常使用但不经常更改的项目特定包含文件
+// stdafx.h : include file for standard system include files,
+// or project specific include files that are used frequently, but
+// are changed infrequently
 //
 
 #pragma once
@@ -10,3 +12,4 @@
 
 
 
+// TODO: reference additional headers your program requires here

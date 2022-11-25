@@ -1,4 +1,4 @@
-// MachiKoro.cpp 定义了控制台应用程序的入口点
+// MachiKoro.cpp : Defines the entry point for the console application.
 //
 #include "stdafx.h"
 #include <iostream>
@@ -20,6 +20,7 @@ void view_slots(Game *g)
 
 int main()
 {
+	Game::getInstance()->version_old = Game::getInstance()->choose_game();
 	while (!Game::getInstance()->is_game_over)
 	{
 		Game::getInstance()->roll_dice();

@@ -1,7 +1,7 @@
 #include "stdafx.h"
 
 #include "Card.h"
-//Card抽象类，所有卡牌的一个接口，提供了卡牌各种属性设置（包括其名字，颜色，名字，颜色，价格，触发点数范围，可获得钱币数量等）
+
 using namespace machi;
 
 void Card::set_card(string name, int cost, int value, int low_roll, int high_roll, Icon icon, Color color)

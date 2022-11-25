@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Card.h"
-//绿色属性卡牌的声明
+
 using namespace machi;
 
 class GreenCard : public Card {

@@ -3,7 +3,7 @@
 #include <string>
 #include "ColorAndIcon.h"
 #include "Bank.h"
-//Card抽象类声明（包括其名字，颜色，名字，颜色，价格，触发点数范围，可获得钱币数量等）
+
 using namespace std;
 namespace machi {
 	class Card {
