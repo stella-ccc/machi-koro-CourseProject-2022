@@ -46,7 +46,12 @@ void Game::num_ai_player()//创造人物，并初始化发送卡片（一个Whea
 	for (int i = 1; i <= (num - ai_num); i++)
 	{
 		string name;
-		cout << "Le nom du " << i << "ier joueur est " << endl;
+		if(i==1)
+			cout << "Le nom du " << i << "er joueur est " << endl;
+		else if(i==2)
+			cout << "Le nom du " << i << "nd joueur est " << endl;
+		else
+			cout << "Le nom du " << i << "e joueur est " << endl;
 		cin >> name;
 		create_player(name);
 	}
@@ -720,9 +725,7 @@ void Game::end_of_turn()//对是否结束进行判定，并且进入下一玩家
 	this->is_game_over = true;
 	for (int i = 0; i < this->players[turn]->yellow_cards.size(); i++)
 	{
-		//if (!this->players[turn]->yellow_cards[i]->active)
-		//作弊代码：
-		if (!this->players[turn]->yellow_cards[i]->active&&this->turn < 25)
+		if (!this->players[turn]->yellow_cards[i]->active)
 		{
 			this->is_game_over = false;
 			break;
